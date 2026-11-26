@@ -14,7 +14,7 @@
         { "password": "Aa1!abc", "expected": "pass" },
         { "password": "Aa1!abcd", "expected": "pass" },
         { "password": "Aa1!abcde", "expected": "pass" },
-        { "password": "alllower1!", "expected": "pass" },
+        { "password": "alllower1!", "expected": "fail" },
         { "password": "NoDigit!!", "expected": "fail" },
         { "password": "NoSpecial1", "expected": "fail" }
       ]
