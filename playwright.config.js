@@ -6,8 +6,8 @@ module.exports = defineConfig({
   fullyParallel: true,
  reporter: [
   ['list'],
-  ['html', { open: 'never' }],
-  ['allure-playwright', { resultsDir: 'allure-results' }]
+  ['html', { open: 'never' }]
+ 
 ],
   use: {
     headless: true,
