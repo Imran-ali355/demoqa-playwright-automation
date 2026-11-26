@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'mcr.microsoft.com/playwright:v1.49.0-noble'
+      args '-u root:root'
+    }
+  }
   options {
     disableConcurrentBuilds()
     timestamps()
@@ -12,8 +17,8 @@ pipeline {
     }
     stage('Install & Setup') {
       steps {
+        sh 'node -v && npm -v'
         sh 'npm ci || npm install'
-        sh 'npx playwright install chromium || true'
       }
     }
     stage('Run Playwright Tests') {
