@@ -4,10 +4,11 @@ const { defineConfig, devices } = require('@playwright/test');
 module.exports = defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  reporter: [
-    ['list'],
-    ['html', { open: 'never' }]
-  ],
+ reporter: [
+  ['list'],
+  ['html', { open: 'never' }],
+  ['allure-playwright', { resultsDir: 'allure-results' }]
+],
   use: {
     headless: true,
     trace: 'on-first-retry',
