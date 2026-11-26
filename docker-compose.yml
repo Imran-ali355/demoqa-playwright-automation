@@ -1,0 +1,9 @@
+services:
+  playwright-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: demoqa-playwright-suite:latest
+    container_name: demoqa-playwright-suite
+    working_dir: /app
+    command: npx playwright test --reporter=list
