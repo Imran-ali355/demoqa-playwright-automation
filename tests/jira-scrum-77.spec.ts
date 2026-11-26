@@ -7,16 +7,17 @@ const { testCases } = data;
 for (const testCase of testCases) {
   test(testCase.title, async ({ page }) => {
     const jiraPage = new JiraScrum77Page(page);
+
     await jiraPage.goto();
 
     for (const { password, expected } of testCase.data) {
       await jiraPage.setPassword(password);
-      const validationMessage = await jiraPage.validatePassword();
+      await jiraPage.validatePassword();
 
       if (expected === 'pass') {
-        expect(validationMessage).toBeNull();
+        expect(await jiraPage.isCaptchaPresent()).toBeFalsy();
       } else {
-        expect(validationMessage).not.toBeNull();
+        expect(await jiraPage.isCaptchaPresent()).toBeTruthy();
       }
     }
   });

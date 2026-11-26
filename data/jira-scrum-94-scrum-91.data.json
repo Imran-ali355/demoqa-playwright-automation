@@ -1,1 +1,12 @@
-{ "SCRUM-94": { "fullName": "", "email": " ", "currentAddress": " " }, "SCRUM-91": { "fullName": "", "email": " ", "currentAddress": " " } }
+{
+  "SCRUM-94": {
+    "fullName": "Imran Ali",
+    "email": "imran.ali@example.com",
+    "currentAddress": "Lahore, Pakistan"
+  },
+  "SCRUM-91": {
+    "fullName": "",
+    "email": "",
+    "currentAddress": ""
+  }
+}

@@ -19,4 +19,12 @@ export class JiraScrum77Page {
     const validationMessage = await this.page.textContent('div.password-validation');
     return validationMessage;
   }
+
+  async submitForm() {
+    await this.page.click('button[type=submit]');
+  }
+
+  async isCaptchaPresent() {
+    return await this.page.isVisible('div.captcha');
+  }
 }

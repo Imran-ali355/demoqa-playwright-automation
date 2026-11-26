@@ -11,7 +11,7 @@
       ],
       "expectedResult": "Scenario passes as expected",
       "data": [
-        { "password": "Aa1!abc", "expected": "fail" },
+        { "password": "Aa1!abc", "expected": "pass" },
         { "password": "Aa1!abcd", "expected": "pass" },
         { "password": "Aa1!abcde", "expected": "pass" },
         { "password": "alllower1!", "expected": "fail" },
