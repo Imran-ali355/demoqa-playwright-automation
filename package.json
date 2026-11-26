@@ -9,6 +9,6 @@
   "keywords": [],
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.65.1"
+    "@playwright/test": "^1.49.0"
   }
 }
