@@ -1,0 +1,23 @@
+{
+  "testCases": [
+    {
+      "id": "SCRUM-77",
+      "title": "[DQA-BOOKSTORE-REGISTER-001] Validate password length and character classes (BVA/EP / boundary)",
+      "type": "Task",
+      "steps": [
+        "Open /register",
+        "Check field validation at each boundary/class",
+        "Do not submit registration; stop if CAPTCHA appears"
+      ],
+      "expectedResult": "Scenario passes as expected",
+      "data": [
+        { "password": "Aa1!abc", "expected": "fail" },
+        { "password": "Aa1!abcd", "expected": "pass" },
+        { "password": "Aa1!abcde", "expected": "pass" },
+        { "password": "alllower1!", "expected": "fail" },
+        { "password": "NoDigit!!", "expected": "fail" },
+        { "password": "NoSpecial1", "expected": "fail" }
+      ]
+    }
+  ]
+}
