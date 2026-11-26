@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { expect, Page, Locator } from '@playwright/test';
 
 export class JiraScrum91Page {
   readonly page: Page;
@@ -8,14 +8,15 @@ export class JiraScrum91Page {
   }
 
   async navigate(): Promise<void> {
-    await this.page.goto('https://example.com');
+    await this.page.goto('https://demoqa.com/alerts');
   }
 
   async clickBugButton(): Promise<void> {
-    await this.page.click('button[data-testid="bug-button"]');
+    await this.page.locator('#alertButton').scrollIntoViewIfNeeded();
+    await this.page.click('#alertButton');
   }
 
   async verifyBugSubmission(): Promise<void> {
-    await expect(this.page.locator('div[data-testid="bug-submitted"]')).toBeVisible();
+    await expect(this.page.locator('#alertButton')).toBeVisible();
   }
 }

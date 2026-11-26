@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { JiraScrum94Scrum91Page } from '../pages/jira-scrum-94-scrum-91.page';
 import data from '../data/jira-scrum-94-scrum-91.data.json';
 
@@ -20,6 +20,12 @@ const runTest = (testId: string) => {
     await jiraPage.enterEmail(caseData.email ?? '');
     await jiraPage.enterCurrentAddress(caseData.currentAddress ?? '');
     await jiraPage.clickSubmitButton();
+
+    if (testId === 'SCRUM-94') {
+      await expect(page.locator('#output')).toBeVisible();
+    } else {
+      await expect(page.locator('#submit')).toBeVisible();
+    }
   });
 };
 

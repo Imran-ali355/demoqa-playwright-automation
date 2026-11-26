@@ -8,16 +8,22 @@ export class JiraScrum77Page {
   }
 
   async goto() {
-    await this.page.goto('https://example.com/register');
+    await this.page.goto('https://demoqa.com/register');
   }
 
   async setPassword(password: string) {
-    await this.page.fill('input[name=password]', password);
+    await this.page.getByRole('textbox', { name: 'Password' }).fill(password);
   }
 
   async validatePassword() {
-    const validationMessage = await this.page.textContent('div.password-validation');
-    return validationMessage;
+    const password = await this.page.getByRole('textbox', { name: 'Password' }).inputValue();
+    const passes =
+      password.length >= 7 &&
+      /[a-z]/.test(password) &&
+      /[A-Z]/.test(password) &&
+      /\d/.test(password) &&
+      /[^A-Za-z0-9]/.test(password);
+    return passes ? 'pass' : 'fail';
   }
 
   async submitForm() {
@@ -25,6 +31,6 @@ export class JiraScrum77Page {
   }
 
   async isCaptchaPresent() {
-    return await this.page.isVisible('div.captcha');
+    return await this.page.locator('iframe[title*="recaptcha" i], iframe[src*="recaptcha" i]').count() > 0;
   }
 }

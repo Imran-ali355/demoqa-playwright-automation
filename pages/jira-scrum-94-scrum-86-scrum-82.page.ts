@@ -12,13 +12,13 @@ export class JiraScrumPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.fullNameInput = page.locator('#fullName');
-    this.emailInput = page.locator('#email');
-    this.currentAddressInput = page.locator('#currentAddress');
-    this.submitButton = page.locator('#submitButton');
-    this.usernameInput = page.locator('#username');
+    this.fullNameInput = page.getByPlaceholder('Full Name');
+    this.emailInput = page.getByPlaceholder('name@example.com');
+    this.currentAddressInput = page.getByPlaceholder('Current Address');
+    this.submitButton = page.getByRole('button', { name: 'Submit' });
+    this.usernameInput = page.getByRole('textbox', { name: 'UserName' });
     this.passwordInput = page.locator('#password');
-    this.loginButton = page.locator('#loginButton');
+    this.loginButton = page.getByRole('button', { name: 'Login' });
   }
 
   async submitForm(fullName: string, email: string, currentAddress: string): Promise<void> {

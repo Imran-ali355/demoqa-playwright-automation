@@ -7,8 +7,8 @@ export class JiraScrum8Page {
 
   constructor(page: Page) {
     this.page = page;
-    this.emailInput = page.locator('#email-input');
-    this.submitButton = page.locator('#submit-button');
+    this.emailInput = page.getByPlaceholder('name@example.com');
+    this.submitButton = page.getByRole('button', { name: 'Submit' });
   }
 
   async enterEmail(email: string): Promise<void> {

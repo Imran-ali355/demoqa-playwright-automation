@@ -6,6 +6,7 @@ for (const data of testData) {
   test(data.title, async ({ page }) => {
     const jiraPage = new JiraScrum91Page(page);
     await jiraPage.navigate();
+    page.once('dialog', dialog => dialog.accept());
     await jiraPage.clickBugButton();
     await jiraPage.verifyBugSubmission();
   });

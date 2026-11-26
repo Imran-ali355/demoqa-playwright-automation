@@ -12,13 +12,9 @@ for (const testCase of testCases) {
 
     for (const { password, expected } of testCase.data) {
       await jiraPage.setPassword(password);
-      await jiraPage.validatePassword();
+      expect(await jiraPage.validatePassword()).toBe(expected);
 
-      if (expected === 'pass') {
-        expect(await jiraPage.isCaptchaPresent()).toBeFalsy();
-      } else {
-        expect(await jiraPage.isCaptchaPresent()).toBeTruthy();
-      }
+      expect(await jiraPage.isCaptchaPresent()).toBeFalsy();
     }
   });
 }
