@@ -17,8 +17,8 @@ pipeline {
     }
     stage('Install & Setup') {
       steps {
-        sh 'node -v && npm -v'
-        sh 'npm ci || npm install'
+        sh 'if [ ! -f package.json ]; then npm init -y; fi'
+        sh 'node -e "require.resolve(\'@playwright/test\')" || npm install -D @playwright/test'
       }
     }
     stage('Run Playwright Tests') {
